@@ -5,6 +5,11 @@ import { WorkComponent } from './components/work/work.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'about',
+    pathMatch: 'full',
+  },
+  {
     path: 'about',
     component: AboutComponent,
   },
