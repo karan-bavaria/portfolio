@@ -1,0 +1,18 @@
+.dot {
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@media (min-width: 0px) {
+  .dot {
+    height: 28px;
+    width: 28px;
+  }
+}
+
+@media (min-width: 500px) {
+  .dot {
+    height: 32px;
+    width: 32px;
+  }
+}

@@ -7,20 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { WorkComponent } from './components/work/work.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './components/footer/footer.component';
+import { OfferComponent } from './components/about/offer/offer.component';
+import { EducationComponent } from './components/about/education/education.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    AboutComponent,
-    WorkComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
+  declarations: [AppComponent, NavbarComponent, AboutComponent, WorkComponent, FooterComponent, OfferComponent, EducationComponent],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

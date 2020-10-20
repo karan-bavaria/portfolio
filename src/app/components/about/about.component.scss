@@ -1,3 +1,11 @@
+#html-start-tag {
+  margin-top: 85px !important;
+}
+
+#html-end-tag {
+  margin-bottom: 85px !important;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -8,38 +16,34 @@
   font-size: 3.5em;
 }
 
-.text {
+.intro-text {
   font-weight: bold;
   font-size: 3.5em;
 }
 
 @media (min-width: 0px) {
   .html-tag,
-  .text {
+  .intro-text {
     font-size: 1.5rem;
   }
 }
 @media (min-width: 770px) {
   .html-tag,
-  .text {
+  .intro-text {
     font-size: 2.5rem;
   }
 }
 @media (min-width: 990px) {
   .html-tag,
-  .text {
+  .intro-text {
     font-size: 3.2rem;
   }
 }
 @media (min-width: 1200px) {
   .html-tag,
-  .text {
+  .intro-text {
     font-size: 3.2rem;
   }
-}
-
-.padding-left-20 {
-  padding-left: 20%;
 }
 
 @media (min-width: 0px) {
@@ -48,42 +52,6 @@
   }
 }
 
-.dot {
-  border-radius: 50%;
-  display: inline-block;
-}
-
-@media (min-width: 0px) {
-  .dot {
-    height: 28px;
-    width: 28px;
-  }
-}
-
-@media (min-width: 500px) {
-  .dot {
-    height: 32px;
-    width: 32px;
-  }
-}
-
-.card-header-text {
-  font-size: 2em;
-  font-weight: bold;
-}
-
-@media (min-width: 0px) {
-  .card-header-text {
-    font-size: 1.8em;
-  }
-}
-
-@media (min-width: 500px) {
-  .card-header-text {
-    font-size: 2em;
-  }
-}
-
-.bullet-points {
-  font-weight: bold;
+.height-60px {
+  height: 60px;
 }
