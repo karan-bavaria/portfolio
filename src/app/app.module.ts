@@ -11,9 +11,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './components/footer/footer.component';
 import { OfferComponent } from './components/about/offer/offer.component';
 import { EducationComponent } from './components/about/education/education.component';
+import { IconStackComponent } from './components/work/icon-stack/icon-stack.component';
+import { OtherStuffComponent } from './components/work/other-stuff/other-stuff.component';
+import { WorkTimelineComponent } from './components/work/work-timeline/work-timeline.component';
+import { ExperienceComponent } from './components/work/experience/experience.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, AboutComponent, WorkComponent, FooterComponent, OfferComponent, EducationComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    AboutComponent,
+    WorkComponent,
+    FooterComponent,
+    OfferComponent,
+    EducationComponent,
+    IconStackComponent,
+    OtherStuffComponent,
+    WorkTimelineComponent,
+    ExperienceComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
