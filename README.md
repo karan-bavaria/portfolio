@@ -1,27 +1,39 @@
 # Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+This project consists is my portfolio. It includes my work experience and some personal information.
 
-## Development server
+It uses following tools and concepts:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. `Angular-CLI` - version 9.1.12.
+2. `Bootstrap 4` - version 4.4.0.
+3. `Font Awesome Icons` - version 5.13.0 - It is used for using font awesome icons directly in angular app.
+4. `SCSS` - It uses custom theming by overriding bootstrap variables.
+5. The website is designed to be `Responsive` using bootstrap flex. To check responsiveness of website, open dev-tools in browser and try en-larging the dev-tools by dragging it (Make sure it is attached to the browser window).
+
+## How To Run App
+
+1. Clone/download project - `https://github.com/noobgod-115/portfolio.git`
+
+2. Go to downloaded folder & run `ng serve` for a dev server.
+
+3. Open browser(Google Chrome preferred) to navigate to `http://localhost:4200/`.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The project structure is as follows:
 
-## Build
+1. Entry/Bootstrap component: `AppComponent`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+2. The app consists of two main Components: `About` and `Work`. It also includes `Navbar & Footer`.
 
-## Running unit tests
+3. The above given components are subdivided as following:
+   `About`: `Offer`, `Education`
+   `Work`: `Icon Stack`, `Experience`, `Work Timeline`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## App Flow
 
-## Running end-to-end tests
+1. When you hit the base url `http://localhost:4200/`, it will initially load `About` page along with `Navbar` and `Footer`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+2. When you click `Work` on the `Navbar` it loads `Work Component`.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+3. Clicking brand icons in the `Footer` redirects to the base url - `http://localhost:4200/`. They are just for display purpose.
