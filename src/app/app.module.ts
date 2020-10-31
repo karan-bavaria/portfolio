@@ -16,6 +16,9 @@ import { IconStackComponent } from './components/portfolio/work/icon-stack/icon-
 import { OtherStuffComponent } from './components/portfolio/work/other-stuff/other-stuff.component';
 import { WorkTimelineComponent } from './components/portfolio/work/work-timeline/work-timeline.component';
 import { WorkComponent } from './components/portfolio/work/work.component';
+import { FloatingButtonComponent } from './components/common/floating-button/floating-button.component';
+import { FormsComponent } from './components/forms/forms.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,8 +35,17 @@ import { WorkComponent } from './components/portfolio/work/work.component';
     ExperienceComponent,
     PortfolioComponent,
     HomeComponent,
+    FloatingButtonComponent,
+    FormsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
