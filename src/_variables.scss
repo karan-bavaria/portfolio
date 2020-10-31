@@ -4,6 +4,10 @@ $secondary: #3aafa9;
 $primary-light: #2b7a78;
 $secondary-light: #def2f1;
 
+$theme-colors: (
+  "primary-light": $primary-light,
+);
+
 .bg-primary-light {
   background-color: $primary-light;
 }
