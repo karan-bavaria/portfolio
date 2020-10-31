@@ -1,6 +1,4 @@
-<nav
-  class="navbar fixed-top navbar-expand-lg navbar-expand-md navbar-expand-sm bg-primary"
->
+<nav class="navbar sticky-top navbar-expand-sm bg-primary">
   <div class="navbar-brand mr-auto">
     <svg
       width="1.3em"
@@ -18,50 +16,34 @@
     </svg>
 
     <span class="navbar-brand mb-0 h1" style="margin-left: 10px; color: white"
-      >KARAN BAVARIA</span
+      >Karan Bavaria</span
     >
   </div>
 
   <button
     class="navbar-toggler border-white"
     type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
     (click)="toggleCollapsed()"
   >
-    <svg
-      width="1.2em"
-      height="1.2em"
-      viewBox="0 0 16 16"
-      class="bi bi-text-center"
-      fill="white"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-      />
-    </svg>
+    <fa-icon [icon]="faBars" class="text-secondary"></fa-icon>
   </button>
   <div
     class="justify-content-end"
     [ngClass]="{ collapse: collapsed, 'navbar-collapse': true }"
-    id="navbarNavAltMarkup"
   >
     <div class="navbar-nav">
       <a
         class="nav-link text-white"
-        [routerLink]="['/about']"
+        [routerLink]="[{ outlets: { portfolio: ['about'] } }]"
         [routerLinkActive]="['active']"
+        (click)="collapsed = true"
         >About Me</a
       >
       <a
         class="nav-link text-white"
-        [routerLink]="['/work']"
+        [routerLink]="[{ outlets: { portfolio: ['work'] } }]"
         [routerLinkActive]="['active']"
+        (click)="collapsed = true"
         >Work</a
       >
     </div>

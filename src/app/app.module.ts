@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AboutComponent } from './components/about/about.component';
-import { WorkComponent } from './components/work/work.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FooterComponent } from './components/footer/footer.component';
-import { OfferComponent } from './components/about/offer/offer.component';
-import { EducationComponent } from './components/about/education/education.component';
-import { IconStackComponent } from './components/work/icon-stack/icon-stack.component';
-import { OtherStuffComponent } from './components/work/other-stuff/other-stuff.component';
-import { WorkTimelineComponent } from './components/work/work-timeline/work-timeline.component';
-import { ExperienceComponent } from './components/work/experience/experience.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/portfolio/about/about.component';
+import { EducationComponent } from './components/portfolio/about/education/education.component';
+import { OfferComponent } from './components/portfolio/about/offer/offer.component';
+import { FooterComponent } from './components/portfolio/footer/footer.component';
+import { NavbarComponent } from './components/portfolio/navbar/navbar.component';
+import { ExperienceComponent } from './components/portfolio/work/experience/experience.component';
+import { IconStackComponent } from './components/portfolio/work/icon-stack/icon-stack.component';
+import { OtherStuffComponent } from './components/portfolio/work/other-stuff/other-stuff.component';
+import { WorkTimelineComponent } from './components/portfolio/work/work-timeline/work-timeline.component';
+import { WorkComponent } from './components/portfolio/work/work.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { ExperienceComponent } from './components/work/experience/experience.com
     OtherStuffComponent,
     WorkTimelineComponent,
     ExperienceComponent,
+    PortfolioComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
   providers: [],
