@@ -20,6 +20,7 @@ import { FloatingButtonComponent } from './components/common/floating-button/flo
 import { FormsComponent } from './components/forms/forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalInfoFormComponent } from './components/forms/personal-info-form/personal-info-form.component';
+import { EducationPopupComponent } from './components/forms/personal-info-form/education-popup/education-popup.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PersonalInfoFormComponent } from './components/forms/personal-info-form
     FloatingButtonComponent,
     FormsComponent,
     PersonalInfoFormComponent,
+    EducationPopupComponent,
   ],
   imports: [
     BrowserModule,

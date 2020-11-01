@@ -1,0 +1,119 @@
+<div class="modal-header">
+  <span class="text-primary-light h5"> Education Details</span>
+</div>
+<div class="modal-body">
+  <form #myForm="ngForm">
+    <div class="d-flex flex-column">
+      <div class="flex-fill">
+        <label
+          for="course"
+          class="text-primary"
+          [ngClass]="{ 'text-danger': validateTextInput(course) }"
+          >Course*</label
+        >
+        <input
+          id="course"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="education.course"
+          [ngClass]="{ 'is-invalid': validateTextInput(course) }"
+          name="course"
+          #course="ngModel"
+          required
+        />
+        <div *ngIf="validateTextInput(course)" class="text-danger">
+          <small>Course is required.</small>
+        </div>
+      </div>
+
+      <div class="flex-fill mt-2">
+        <label
+          for="institution"
+          [ngClass]="{ 'text-danger': validateTextInput(institution) }"
+          >Institution*</label
+        >
+        <input
+          id="institution"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="education.institution"
+          [ngClass]="{ 'is-invalid': validateTextInput(institution) }"
+          name="institution"
+          #institution="ngModel"
+          required
+        />
+        <div *ngIf="validateTextInput(institution)" class="text-danger">
+          <small>Institution is required.</small>
+        </div>
+      </div>
+
+      <div class="flex-fill mt-2">
+        <label for="city">City</label>
+        <input id="city" type="text" class="form-control text-primary-light" />
+      </div>
+
+      <div class="d-flex flex-md-row flex-column mt-3">
+        <div class="flex-fill">
+          <label
+            for="graduationYear"
+            class="text-primary"
+            [ngClass]="{ 'text-danger': validateNumberInput(graduationYear) }"
+            >Graduation year*</label
+          >
+          <input
+            id="graduationYear"
+            type="number"
+            class="form-control text-primary-light"
+            [(ngModel)]="education.graduationYear"
+            [ngClass]="{ 'is-invalid': validateNumberInput(graduationYear) }"
+            name="graduationYear"
+            #graduationYear="ngModel"
+            required
+          />
+          <div *ngIf="validateNumberInput(graduationYear)" class="text-danger">
+            <small>Graduation Year is required.</small>
+          </div>
+        </div>
+
+        <div class="flex-fill ml-md-3 mt-md-0 mt-2">
+          <label
+            for="result"
+            class="text-primary"
+            [ngClass]="{ 'text-danger': validateTextInput(result) }"
+            >Result*</label
+          >
+          <input
+            id="result"
+            type="text"
+            class="form-control text-primary-light"
+            [(ngModel)]="education.result"
+            [ngClass]="{ 'is-invalid': validateTextInput(result) }"
+            name="result"
+            #result="ngModel"
+            required
+          />
+          <div *ngIf="validateTextInput(result)" class="text-danger">
+            <small>Please provide result.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-primary-light"
+    (click)="activeModal.dismiss()"
+  >
+    Cancel
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary-light"
+    (click)="activeModal.close(education)"
+    [disabled]="myForm.invalid"
+  >
+    {{ selectedEducationIndex == null ? "Add" : "Edit" }}
+  </button>
+</div>
