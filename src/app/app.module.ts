@@ -19,6 +19,7 @@ import { WorkComponent } from './components/portfolio/work/work.component';
 import { FloatingButtonComponent } from './components/common/floating-button/floating-button.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PersonalInfoFormComponent } from './components/forms/personal-info-form/personal-info-form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     FloatingButtonComponent,
     FormsComponent,
+    PersonalInfoFormComponent,
   ],
   imports: [
     BrowserModule,

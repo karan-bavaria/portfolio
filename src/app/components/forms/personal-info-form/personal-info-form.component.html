@@ -1,0 +1,241 @@
+<div class="d-flex flex-grow-1 justify-content-center">
+  <div class="d-flex flex-column w-75 shadow mt-2 mb-2 pl-2 pr-2 pb-5 pt-4">
+    <div class="text-primary mb-5 mt-2">
+      <span class="card-header-text text-secondary font-weight-bold ml-4"
+        >PERSONAL INFO</span
+      >
+    </div>
+    <div class="pl-4 pr-4">
+      <form>
+        <div class="d-flex flex-md-row flex-column">
+          <div class="flex-fill">
+            <label for="firstName" class="text-primary">First name *</label>
+            <input
+              id="firstName"
+              type="text"
+              class="form-control text-primary-light"
+            />
+          </div>
+          <div class="flex-fill ml-md-3 mt-md-0 mt-2">
+            <label for="lastName">Last name</label>
+            <input
+              id="lastName"
+              type="text"
+              class="form-control text-primary-light"
+            />
+          </div>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="emailAddress">Email address</label>
+          <input
+            type="email"
+            class="form-control text-primary-light"
+            id="emailAddress"
+            aria-describedby="emailHelp"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
+
+        <div class="d-flex flex-md-row flex-column mt-3">
+          <div class="flex-fill">
+            <label for="jobTitle" class="text-primary">Job title</label>
+            <input
+              id="jobTitle"
+              type="text"
+              class="form-control text-primary-light"
+            />
+          </div>
+          <div class="flex-fill ml-md-3 mt-md-0 mt-2">
+            <label for="Contact">Contact</label>
+            <input
+              id="contact"
+              type="number"
+              class="form-control text-primary-light"
+            />
+          </div>
+        </div>
+
+        <div class="d-flex flex-md-row flex-column mt-3">
+          <div class="flex-fill form-group">
+            <label class="text-primary">Education</label>
+            <ul class="list-group">
+              <li
+                class="list-group-item text-primary-light"
+                *ngFor="
+                  let education of educationTimeline;
+                  let selectedEducationIndex = index
+                "
+              >
+                <div class="d-flex flex-md-row flex-column">
+                  <span>
+                    {{ education.graduationYear }}
+                  </span>
+                  <span class="ml-md-4 mt-md-0 mt-2 mr-auto">
+                    {{ education.course }}
+                  </span>
+                  <div class="mt-md-0 mt-2">
+                    <span class="icons text-primary-light">
+                      <fa-icon
+                        [icon]="faPencilAlt"
+                        size="md"
+                        (click)="editSelectedEducation(selectedEducationIndex)"
+                      ></fa-icon>
+                    </span>
+                    <span class="icons text-primary-light">
+                      <fa-icon
+                        [icon]="faTrashAlt"
+                        class="ml-3"
+                        size="md"
+                        (click)="
+                          deleteSelectedEducation(selectedEducationIndex)
+                        "
+                      ></fa-icon>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <a (click)="open(content)" class="text-primary">
+                  <fa-icon [icon]="faPlusSquare" size="lg"></fa-icon>
+                  <span class="ml-2">click to add education</span></a
+                >
+              </li>
+            </ul>
+            <small class="form-text text-muted"
+              >Education timeline will be displayed as shown in the list.</small
+            >
+          </div>
+        </div>
+
+        <div class="d-flex mt-3 justify-content-end">
+          <button type="button" class="btn btn-primary-light">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <span class="text-primary-light h5"> Education Details</span>
+  </div>
+  <div class="modal-body">
+    <form #myForm="ngForm">
+      <div class="d-flex flex-column">
+        <div class="flex-fill">
+          <label for="course" class="text-primary">Course</label>
+          <input
+            id="course"
+            type="text"
+            class="form-control text-primary-light"
+            [(ngModel)]="education.course"
+            name="course"
+            #course="ngModel"
+            required
+          />
+          <div
+            *ngIf="
+              course.touched &&
+              (course.invalid || course.value.trim().length == 0)
+            "
+            class="text-danger"
+          >
+            <small>Course is required.</small>
+          </div>
+        </div>
+        <div class="flex-fill mt-2">
+          <label for="institution">Institution</label>
+          <input
+            id="institution"
+            type="text"
+            class="form-control text-primary-light"
+            [(ngModel)]="education.institution"
+            name="institution"
+            #institution="ngModel"
+            required
+          />
+          <div
+            *ngIf="
+              institution.touched &&
+              (institution.invalid || institution.value.trim().length == 0)
+            "
+            class="text-danger"
+          >
+            <small>Institution is required.</small>
+          </div>
+        </div>
+        <div class="flex-fill mt-2">
+          <label for="city">City</label>
+          <input
+            id="city"
+            type="text"
+            class="form-control text-primary-light"
+          />
+        </div>
+        <div class="d-flex flex-md-row flex-column mt-3">
+          <div class="flex-fill">
+            <label for="graduationYear" class="text-primary"
+              >Graduation year</label
+            >
+            <input
+              id="graduationYear"
+              type="number"
+              class="form-control text-primary-light"
+              [(ngModel)]="education.graduationYear"
+              name="graduationYear"
+              #graduationYear="ngModel"
+              required
+            />
+            <div
+              *ngIf="graduationYear.touched && graduationYear.invalid"
+              class="text-danger"
+            >
+              <small>Graduation Year is required.</small>
+            </div>
+          </div>
+          <div class="flex-fill ml-md-3 mt-md-0 mt-2">
+            <label for="result">Result</label>
+            <input
+              id="result"
+              type="text"
+              class="form-control text-primary-light"
+              [(ngModel)]="education.result"
+              name="result"
+              #result="ngModel"
+              required
+            />
+            <div
+              *ngIf="
+                result.touched &&
+                (result.invalid || result.value.trim().length == 0)
+              "
+              class="text-danger"
+            >
+              <small>Please provide result.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-primary-light"
+      (click)="modal.dismiss()"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary-light"
+      (click)="modal.close()"
+      [disabled]="myForm.invalid"
+    >
+      {{ !selectedEducationIndex ? "Add" : "Edit" }}
+    </button>
+  </div>
+</ng-template>
