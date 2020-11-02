@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PersonalInfo, UserData } from '../models/portfolio.model';
+import {
+  IntroductionInfo,
+  PersonalInfo,
+  UserData,
+} from '../models/portfolio.model';
 
 @Injectable({
   providedIn: 'root',
@@ -7,11 +11,20 @@ import { PersonalInfo, UserData } from '../models/portfolio.model';
 export class DataService {
   constructor() {}
 
-  userData: UserData = {
+  private _userData: UserData = {
     personalInfo: null,
+    introductionInfo: null,
   };
 
+  get userData() {
+    return this._userData;
+  }
+
   setPersonalInfo(personalInfo: PersonalInfo) {
-    this.userData.personalInfo = { ...personalInfo };
+    this._userData.personalInfo = { ...personalInfo };
+  }
+
+  setIntroductionInfo(introductionInfo: IntroductionInfo) {
+    this._userData.introductionInfo = { ...introductionInfo };
   }
 }

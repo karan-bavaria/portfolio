@@ -17,12 +17,17 @@ svg:hover {
   text-decoration: none;
 }
 
-.btn-width {
-  width: 15%;
+.icons:hover {
+  color: #17252a !important;
+  cursor: pointer;
 }
 
 .invalid {
   border-color: #dc3545;
+}
+
+.btn-width {
+  width: 15%;
 }
 
 @media (min-width: 576px) {

@@ -17,4 +17,10 @@ export interface PersonalInfo {
 
 export interface UserData {
   personalInfo: PersonalInfo;
+  introductionInfo: IntroductionInfo;
+}
+
+export interface IntroductionInfo {
+  introduction: string;
+  coverLetter: string;
 }
