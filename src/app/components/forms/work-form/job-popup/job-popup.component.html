@@ -1,0 +1,157 @@
+<div class="modal-header">
+  <span class="text-primary-light h5"> Job Details</span>
+</div>
+<div class="modal-body">
+  <form #jobDetailsForm="ngForm">
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-md-row flex-column">
+        <div class="flex-fill">
+          <label
+            for="startingYear"
+            class="text-primary"
+            [ngClass]="{ 'text-danger': validateNumberInput(startingYear) }"
+            >Starting Year*</label
+          >
+          <input
+            id="startingYear"
+            type="number"
+            class="form-control text-primary-light"
+            [(ngModel)]="job.startingYear"
+            [ngClass]="{ 'is-invalid': validateNumberInput(startingYear) }"
+            name="startingYear"
+            #startingYear="ngModel"
+            required
+          />
+          <div *ngIf="validateNumberInput(startingYear)" class="text-danger">
+            <small>Starting year is required.</small>
+          </div>
+        </div>
+
+        <div class="flex-fill ml-md-2 mt-md-0 mt-2">
+          <label
+            for="endingYear"
+            class="text-primary"
+            [ngClass]="{ 'text-danger': validateNumberInput(endingYear) }"
+            >Ending Year*</label
+          >
+          <input
+            id="endingYear"
+            type="number"
+            class="form-control text-primary-light"
+            [(ngModel)]="job.endingYear"
+            [disabled]="job.onGoing"
+            [ngClass]="{ 'is-invalid': validateNumberInput(endingYear) }"
+            name="endingYear"
+            #endingYear="ngModel"
+            required
+          />
+          <div *ngIf="validateNumberInput(endingYear)" class="text-danger">
+            <small>Ending year is required.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-fill ml-2 mt-2 justify-content-end">
+        <div class="custom-control custom-checkbox">
+          <input
+            class="custom-control-input"
+            style="margin-top: 10px"
+            type="checkbox"
+            name="onGoing"
+            id="onGoingJob"
+            [(ngModel)]="job.onGoing"
+            (change)="job.endingYear = job.onGoing ? null : job.endingYear"
+          />
+          <label class="custom-control-label" for="onGoingJob">OnGoing</label>
+        </div>
+      </div>
+
+      <div class="flex-fill">
+        <label
+          for="jobTitle"
+          [ngClass]="{ 'text-danger': validateTextInput(jobTitle) }"
+          >Job Title*</label
+        >
+        <input
+          id="jobTitle"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="job.jobTitle"
+          [ngClass]="{ 'is-invalid': validateTextInput(jobTitle) }"
+          name="jobTitle"
+          #jobTitle="ngModel"
+          required
+        />
+        <div *ngIf="validateTextInput(jobTitle)" class="text-danger">
+          <small>Job title is required.</small>
+        </div>
+      </div>
+
+      <div class="flex-fill mt-2">
+        <label
+          for="companyName"
+          [ngClass]="{ 'text-danger': validateTextInput(companyName) }"
+          >Company Name*</label
+        >
+        <input
+          id="companyName"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="job.companyName"
+          [ngClass]="{ 'is-invalid': validateTextInput(companyName) }"
+          name="companyName"
+          #companyName="ngModel"
+          required
+        />
+        <div *ngIf="validateTextInput(companyName)" class="text-danger">
+          <small>Company Name is required.</small>
+        </div>
+      </div>
+
+      <div class="flex-fill mt-2">
+        <label
+          for="projects"
+          [ngClass]="{ 'text-danger': validateTextInput(projects) }"
+          >Project details*</label
+        >
+        <textarea
+          id="projects"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="projectDetails"
+          name="projects"
+          #projects="ngModel"
+          rows="4"
+          autosize
+          required
+        ></textarea>
+        <small *ngIf="validateTextInput(projects)" class="text-danger"
+          >Project details are required.</small
+        >
+        <div *ngIf="!validateTextInput(projects)" class="form-text text-muted">
+          <small
+            >Tell us about your roles and responsibilities at the
+            company.</small
+          >
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-primary-light"
+    (click)="activeModal.dismiss()"
+  >
+    Cancel
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary-light"
+    (click)="closePopup()"
+    [disabled]="jobDetailsForm.invalid"
+  >
+    {{ selectedJobIndex == null ? "Add" : "Edit" }}
+  </button>
+</div>

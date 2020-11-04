@@ -6,6 +6,7 @@ import { Education, PersonalInfo } from 'src/app/models/portfolio.model';
 import { DataService } from 'src/app/data/data.service';
 import { EducationPopupComponent } from './education-popup/education-popup.component';
 import { NgModel } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-info-form',
@@ -15,7 +16,9 @@ import { NgModel } from '@angular/forms';
 export class PersonalInfoFormComponent {
   constructor(
     private modalService: NgbModal,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   faPlusSquare = faPlusSquare;
@@ -23,7 +26,7 @@ export class PersonalInfoFormComponent {
   faTrashAlt = faTrashAlt;
 
   selectedEducationIndex: number = null;
-  educationDetailsMissing: Boolean = false;
+  educationDetailsMissing: boolean = false;
 
   personalInfo: PersonalInfo = {
     firstName: '',
@@ -47,6 +50,8 @@ export class PersonalInfoFormComponent {
   openEducationPopup() {
     const modalRef = this.modalService.open(EducationPopupComponent, {
       centered: true,
+      backdrop: 'static',
+      keyboard: false,
     });
     modalRef.componentInstance.selectedEducationIndex = this.selectedEducationIndex;
     modalRef.componentInstance.education = { ...this.education };
@@ -93,6 +98,8 @@ export class PersonalInfoFormComponent {
   savePersonalInfo() {
     this.personalInfo.educationTimeline = [...this.educationTimeline];
     this.dataService.setPersonalInfo(this.personalInfo);
+
+    this.router.navigate(['/forms', { outlets: { forms: 'intro' } }]);
   }
 
   resetEducationDetails() {

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsComponent } from './components/forms/forms.component';
+import { IntroFormComponent } from './components/forms/intro-form/intro-form.component';
+import { PersonalInfoFormComponent } from './components/forms/personal-info-form/personal-info-form.component';
+import { WorkFormComponent } from './components/forms/work-form/work-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/portfolio/about/about.component';
 
@@ -20,6 +23,30 @@ const routes: Routes = [
   {
     path: 'forms',
     component: FormsComponent,
+    children: [
+      {
+        path: '',
+        component: PersonalInfoFormComponent,
+        outlet: 'forms',
+        data: { animation: 'PersonalInfo' },
+      },
+      {
+        path: 'intro',
+        component: IntroFormComponent,
+        outlet: 'forms',
+        data: { animation: 'Intro' },
+      },
+      {
+        path: 'workinfo',
+        component: WorkFormComponent,
+        outlet: 'forms',
+        data: { animation: 'WorkInfo' },
+      },
+      {
+        path: '**',
+        redirectTo: '',
+      },
+    ],
   },
   {
     path: 'portfolio',
@@ -39,6 +66,10 @@ const routes: Routes = [
         path: 'work',
         component: WorkComponent,
         outlet: 'portfolio',
+      },
+      {
+        path: '**',
+        redirectTo: '',
       },
     ],
   },

@@ -1,0 +1,68 @@
+<div class="modal-header">
+  <span class="text-primary-light h5"> Job Details</span>
+</div>
+<div class="modal-body">
+  <form #cardDetailsForm="ngForm">
+    <div class="d-flex flex-column">
+      <div class="flex-fill">
+        <label
+          for="cardHeader"
+          [ngClass]="{ 'text-danger': validateTextInput(cardHeader) }"
+          >Header*</label
+        >
+        <input
+          id="cardHeader"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="card.cardHeader"
+          [ngClass]="{ 'is-invalid': validateTextInput(cardHeader) }"
+          name="cardHeader"
+          #cardHeader="ngModel"
+          required
+        />
+        <div *ngIf="validateTextInput(cardHeader)" class="text-danger">
+          <small>Please provide a suitable header.</small>
+        </div>
+      </div>
+
+      <div class="flex-fill mt-2">
+        <label
+          for="cardDetails"
+          [ngClass]="{ 'text-danger': validateTextInput(cardDetails) }"
+          >Project details*</label
+        >
+        <textarea
+          id="cardDetails"
+          type="text"
+          class="form-control text-primary-light"
+          [(ngModel)]="card.cardDetails"
+          name="cardDetails"
+          #cardDetails="ngModel"
+          rows="8"
+          autosize
+          required
+        ></textarea>
+        <small *ngIf="validateTextInput(cardDetails)" class="text-danger"
+          >Card details are required.</small
+        >
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-primary-light"
+    (click)="activeModal.dismiss()"
+  >
+    Cancel
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary-light"
+    (click)="activeModal.close(card)"
+    [disabled]="cardDetailsForm.invalid"
+  >
+    {{ selectedCardIndex == null ? "Add" : "Edit" }}
+  </button>
+</div>

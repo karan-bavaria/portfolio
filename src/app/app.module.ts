@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +17,6 @@ import { IconStackComponent } from './components/portfolio/work/icon-stack/icon-
 import { OtherStuffComponent } from './components/portfolio/work/other-stuff/other-stuff.component';
 import { WorkTimelineComponent } from './components/portfolio/work/work-timeline/work-timeline.component';
 import { WorkComponent } from './components/portfolio/work/work.component';
-
 import { FormsComponent } from './components/forms/forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalInfoFormComponent } from './components/forms/personal-info-form/personal-info-form.component';
@@ -24,6 +24,12 @@ import { EducationPopupComponent } from './components/forms/personal-info-form/e
 import { IntroFormComponent } from './components/forms/intro-form/intro-form.component';
 import { FloatingButtonComponent } from './components/common/components/floating-button/floating-button.component';
 import { Autosize } from './components/common/directives/auto-resize.directive';
+import { WorkFormComponent } from './components/forms/work-form/work-form.component';
+import { JobPopupComponent } from './components/forms/work-form/job-popup/job-popup.component';
+import { AddDotOnEnterDirective } from './components/common/directives/add-dot-on-enter.directive';
+import { QuillModule } from 'ngx-quill';
+import { IconsPopupComponent } from './components/forms/work-form/icons-popup/icons-popup.component';
+import { CardsPopupComponent } from './components/forms/work-form/cards-popup/cards-popup.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +52,15 @@ import { Autosize } from './components/common/directives/auto-resize.directive';
     EducationPopupComponent,
     IntroFormComponent,
     Autosize,
+    WorkFormComponent,
+    JobPopupComponent,
+    AddDotOnEnterDirective,
+    IconsPopupComponent,
+    CardsPopupComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,

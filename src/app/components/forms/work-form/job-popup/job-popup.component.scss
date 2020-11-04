@@ -1,0 +1,18 @@
+input[type="checkbox"] {
+  /* Double-sized Checkboxes */
+  transform: scale(1.5);
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #2b7a78 !important;
+  border-color: #2b7a78 !important;
+}
+
+textarea {
+  resize: none;
+}

@@ -3,6 +3,7 @@ import {
   IntroductionInfo,
   PersonalInfo,
   UserData,
+  WorkInfo,
 } from '../models/portfolio.model';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class DataService {
   private _userData: UserData = {
     personalInfo: null,
     introductionInfo: null,
+    workInfo: null,
   };
 
   get userData() {
@@ -26,5 +28,9 @@ export class DataService {
 
   setIntroductionInfo(introductionInfo: IntroductionInfo) {
     this._userData.introductionInfo = { ...introductionInfo };
+  }
+
+  setWorkInfo(workInfo: WorkInfo) {
+    this._userData.workInfo = { ...workInfo };
   }
 }

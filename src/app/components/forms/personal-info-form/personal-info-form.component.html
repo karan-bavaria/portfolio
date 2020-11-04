@@ -123,7 +123,7 @@
             >
             <ul class="list-group">
               <li
-                class="list-group-item text-primary-light"
+                class="list-group-item text-primary-light list-color"
                 *ngFor="
                   let education of educationTimeline;
                   let selectedEducationIndex = index
@@ -183,7 +183,7 @@
             [disabled]="personalInfoForm.invalid || !educationTimeline.length"
             (click)="savePersonalInfo()"
           >
-            Save
+            Next
           </button>
         </div>
       </form>

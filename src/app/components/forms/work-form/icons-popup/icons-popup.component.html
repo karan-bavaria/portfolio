@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <span class="text-primary-light h5"> Select technology you know </span>
+</div>
+<div class="modal-body">
+  <div class="d-flex flex-column">
+    <ul class="list-group">
+      <li
+        class="list-group-item pt-0 pb-0"
+        *ngFor="let technology of technologyStack"
+      >
+        <div class="d-flex custom-control form-control-lg custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            [id]="technology.name"
+            [(ngModel)]="technology.isSelected"
+          />
+          <label
+            class="d-flex pl-2 custom-control-label icon-label"
+            [for]="technology.name"
+            >{{ technology.name }}
+          </label>
+          <span class="ml-auto">
+            <fa-icon
+              [icon]="technology.icon"
+              class="text-secondary ml-2"
+              size="lg"
+            ></fa-icon>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-primary-light"
+    (click)="activeModal.dismiss()"
+  >
+    Cancel
+  </button>
+  <button type="button" class="btn btn-primary-light" (click)="closePopup()">
+    {{ !selectedTechnologyStack.length ? "Add" : "Edit" }}
+  </button>
+</div>

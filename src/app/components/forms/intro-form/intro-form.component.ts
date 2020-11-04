@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/data/data.service';
 
 @Component({
@@ -8,10 +9,20 @@ import { DataService } from 'src/app/data/data.service';
   styleUrls: ['./intro-form.component.scss'],
 })
 export class IntroFormComponent {
-  constructor(private fb: FormBuilder, private dataService: DataService) {}
+  constructor(
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  introductionMaxLength: number = 80;
 
   introductionForm = this.fb.group({
-    introduction: ['', [Validators.required, Validators.maxLength(100)]],
+    introduction: [
+      '',
+      [Validators.required, Validators.maxLength(this.introductionMaxLength)],
+    ],
     coverLetter: ['', Validators.required],
   });
 
@@ -25,6 +36,7 @@ export class IntroFormComponent {
 
   saveChanges() {
     this.dataService.setIntroductionInfo(this.introductionForm.value);
+    this.router.navigate(['/forms', { outlets: { forms: 'workinfo' } }]);
   }
 
   validateTextInput(input: AbstractControl): Boolean {
