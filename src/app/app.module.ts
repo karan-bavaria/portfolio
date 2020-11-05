@@ -27,7 +27,6 @@ import { Autosize } from './components/common/directives/auto-resize.directive';
 import { WorkFormComponent } from './components/forms/work-form/work-form.component';
 import { JobPopupComponent } from './components/forms/work-form/job-popup/job-popup.component';
 import { AddDotOnEnterDirective } from './components/common/directives/add-dot-on-enter.directive';
-import { QuillModule } from 'ngx-quill';
 import { IconsPopupComponent } from './components/forms/work-form/icons-popup/icons-popup.component';
 import { CardsPopupComponent } from './components/forms/work-form/cards-popup/cards-popup.component';
 

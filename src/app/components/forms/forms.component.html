@@ -21,17 +21,32 @@
     </div>
   </div>
 
-  <footer class="bg-secondary sticky-bottom step-footer">
+  <footer class="bg-secondary step-footer">
     <div class="text-center m-2">
       <span
         class="step text-primary-light bg-white font-weight-bold mr-2"
-        [ngClass]="{ 'step-finish': true }"
+        [ngClass]="{
+          'step-finish': dataService.isPersonalDataSaved,
+          'step-active': onPersonalForm
+        }"
         >1</span
       >
-      <span class="step text-primary-light bg-white font-weight-bold mr-2"
+      <span
+        class="step text-primary-light bg-white font-weight-bold mr-2"
+        [ngClass]="{
+          'step-finish': dataService.isIntroSaved,
+          'step-active': onIntroForm
+        }"
         >2</span
       >
-      <span class="step text-primary-light bg-white font-weight-bold">3</span>
+      <span
+        class="step text-primary-light bg-white font-weight-bold"
+        [ngClass]="{
+          'step-finish': dataService.isWorkInfoSaved,
+          'step-active': onWorkForm
+        }"
+        >3</span
+      >
     </div>
   </footer>
 </div>
