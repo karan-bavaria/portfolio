@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/data/data.service';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-intro-form',
@@ -10,6 +11,10 @@ import { DataService } from 'src/app/data/data.service';
 })
 export class IntroFormComponent implements OnInit {
   @Input() editMode: boolean;
+
+  collapsed: boolean;
+  faChevronDown = faChevronDown;
+  show: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +31,7 @@ export class IntroFormComponent implements OnInit {
       this.coverLetter.setValue(
         this.dataService.userData.introductionInfo.coverLetter
       );
+      this.collapsed = true;
     }
   }
 
@@ -50,7 +56,8 @@ export class IntroFormComponent implements OnInit {
   saveChanges() {
     this.dataService.setIntroductionInfo(this.introductionForm.value);
     if (this.editMode) {
-      alert('personal info updated');
+      this.show = true;
+      setTimeout(() => (this.show = false), 3000);
       return;
     }
     this.router.navigate(['/forms', { outlets: { forms: 'workinfo' } }]);

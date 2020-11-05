@@ -17,5 +17,8 @@
     <app-work-form [editMode]="true"></app-work-form>
   </div>
 
-  <app-floating-button (event)="navigateToPortfolio()"></app-floating-button>
+  <app-floating-button
+    [edit]="false"
+    (event)="navigateToPortfolio()"
+  ></app-floating-button>
 </div>

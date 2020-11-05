@@ -2,6 +2,9 @@
 
 <router-outlet name="portfolio"></router-outlet>
 
-<app-floating-button (event)="navigateToEditScreen()"></app-floating-button>
+<app-floating-button
+  [edit]="true"
+  (event)="navigateToEditScreen()"
+></app-floating-button>
 
 <app-footer [email]="email" [contact]="contact"></app-footer>

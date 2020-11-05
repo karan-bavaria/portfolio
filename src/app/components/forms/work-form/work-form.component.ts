@@ -13,6 +13,7 @@ import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { IconsPopupComponent } from './icons-popup/icons-popup.component';
 import { CardsPopupComponent } from './cards-popup/cards-popup.component';
 import { Router } from '@angular/router';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-work-form',
@@ -22,10 +23,13 @@ import { Router } from '@angular/router';
 export class WorkFormComponent implements OnInit {
   @Input() editMode: boolean;
 
+  collapsed: boolean;
+  faChevronDown = faChevronDown;
   jobHistory: Job[] = [];
   selectedJobIndex: number;
   selectedCardIndex: number;
   jobDetailsMissing: boolean = false;
+  show: boolean;
 
   faPlusSquare = faPlusSquare;
   faPencilAlt = faPencilAlt;
@@ -55,6 +59,7 @@ export class WorkFormComponent implements OnInit {
     if (this.editMode) {
       this.workInfo = { ...this.dataService.userData.workInfo };
       this.jobHistory = [...this.workInfo.jobHistory];
+      this.collapsed = true;
     }
   }
 
@@ -182,7 +187,8 @@ export class WorkFormComponent implements OnInit {
     this.dataService.setWorkInfo(this.workInfo);
 
     if (this.editMode) {
-      alert('data updated');
+      this.show = true;
+      setTimeout(() => (this.show = false), 3000);
       return;
     }
     this.router.navigate(['/portfolio']);

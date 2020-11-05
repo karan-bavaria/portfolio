@@ -9,7 +9,7 @@
           <label
             for="startingYear"
             class="text-primary"
-            [ngClass]="{ 'text-danger': validateNumberInput(startingYear) }"
+            [ngClass]="{ 'text-danger': validateYearInput(startingYear) }"
             >Starting Year*</label
           >
           <input
@@ -17,13 +17,13 @@
             type="number"
             class="form-control text-primary-light"
             [(ngModel)]="job.startingYear"
-            [ngClass]="{ 'is-invalid': validateNumberInput(startingYear) }"
+            [ngClass]="{ 'is-invalid': validateYearInput(startingYear) }"
             name="startingYear"
             #startingYear="ngModel"
             required
           />
-          <div *ngIf="validateNumberInput(startingYear)" class="text-danger">
-            <small>Starting year is required.</small>
+          <div *ngIf="validateYearInput(startingYear)" class="text-danger">
+            <small>Provide valid year.</small>
           </div>
         </div>
 
@@ -31,7 +31,7 @@
           <label
             for="endingYear"
             class="text-primary"
-            [ngClass]="{ 'text-danger': validateNumberInput(endingYear) }"
+            [ngClass]="{ 'text-danger': validateYearInput(endingYear) }"
             >Ending Year*</label
           >
           <input
@@ -40,13 +40,13 @@
             class="form-control text-primary-light"
             [(ngModel)]="job.endingYear"
             [disabled]="job.onGoing"
-            [ngClass]="{ 'is-invalid': validateNumberInput(endingYear) }"
+            [ngClass]="{ 'is-invalid': validateYearInput(endingYear) }"
             name="endingYear"
             #endingYear="ngModel"
             required
           />
-          <div *ngIf="validateNumberInput(endingYear)" class="text-danger">
-            <small>Ending year is required.</small>
+          <div *ngIf="validateYearInput(endingYear)" class="text-danger">
+            <small>Provide valid year.</small>
           </div>
         </div>
       </div>
@@ -150,7 +150,7 @@
     type="button"
     class="btn btn-primary-light"
     (click)="closePopup()"
-    [disabled]="jobDetailsForm.invalid"
+    [disabled]="jobDetailsForm.invalid || !yearInputValid"
   >
     {{ selectedJobIndex == null ? "Add" : "Edit" }}
   </button>

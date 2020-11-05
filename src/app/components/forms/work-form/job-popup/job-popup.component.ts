@@ -13,6 +13,7 @@ export class JobPopupComponent implements OnInit {
   @Input() job: Job;
 
   projectDetails: string;
+  yearInputValid: boolean;
 
   constructor(public activeModal: NgbActiveModal) {}
 
@@ -26,6 +27,18 @@ export class JobPopupComponent implements OnInit {
 
   validateNumberInput(input: NgModel): Boolean {
     return input.touched && input.invalid;
+  }
+
+  validateYearInput(input: NgModel): Boolean {
+    if (input.touched) {
+      if (input.invalid) return true;
+      if (input.value > 2020 || input.value < 1910) {
+        this.yearInputValid = false;
+        return true;
+      }
+      this.yearInputValid = true;
+      return false;
+    }
   }
 
   closePopup() {

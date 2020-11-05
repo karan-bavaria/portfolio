@@ -22,6 +22,10 @@ svg:hover {
   width: 15%;
 }
 
+.form-width {
+  width: 95%;
+}
+
 @media (min-width: 576px) {
   .form-width {
     width: 95%;
@@ -40,4 +44,9 @@ svg:hover {
   .form-width {
     width: 75%;
   }
+}
+
+.expand-icon {
+  margin-top: 12px;
+  margin-right: 10px;
 }

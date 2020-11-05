@@ -7,6 +7,9 @@ import { DataService } from 'src/app/data/data.service';
 import { EducationPopupComponent } from './education-popup/education-popup.component';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Subject } from 'rxjs';
+import { debounceTime, flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-personal-info-form',
@@ -15,6 +18,10 @@ import { Router } from '@angular/router';
 })
 export class PersonalInfoFormComponent implements OnInit {
   @Input() editMode: boolean;
+
+  collapsed: boolean;
+  faChevronDown = faChevronDown;
+  show = false;
 
   constructor(
     private modalService: NgbModal,
@@ -26,6 +33,7 @@ export class PersonalInfoFormComponent implements OnInit {
     if (this.editMode) {
       this.personalInfo = { ...this.dataService.userData.personalInfo };
       this.educationTimeline = [...this.personalInfo.educationTimeline];
+      this.collapsed = false;
     }
   }
 
@@ -108,7 +116,8 @@ export class PersonalInfoFormComponent implements OnInit {
     this.dataService.setPersonalInfo(this.personalInfo);
 
     if (this.editMode) {
-      alert('data edit successful');
+      this.show = true;
+      setTimeout(() => (this.show = false), 3000);
       return;
     }
     this.router.navigate(['/forms', { outlets: { forms: 'intro' } }]);

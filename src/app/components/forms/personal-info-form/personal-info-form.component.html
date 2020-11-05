@@ -1,14 +1,26 @@
 <div class="d-flex flex-grow-1 justify-content-center">
   <div
-    class="d-flex flex-column shadow form-width mt-2 mb-2 pl-2 pr-2 pb-5 pt-4 bg-white"
+    class="d-flex flex-column shadow form-width mt-2 mb-2 pl-2 pr-2 bg-white pb-1"
+    [ngClass]="{ 'pb-5': !collapsed }"
   >
-    <div class="text-primary mb-5 mt-2">
+    <div class="d-flex text-primary mt-2" [ngClass]="{ 'mb-5': !collapsed }">
       <span class="card-header-text text-secondary font-weight-bold ml-4"
         >PERSONAL INFO</span
       >
+      <a
+        (click)="collapsed = !collapsed"
+        *ngIf="editMode"
+        class="ml-auto expand-icon"
+      >
+        <fa-icon
+          [icon]="faChevronDown"
+          class="text-secondary ml-2"
+          size="lg"
+        ></fa-icon
+      ></a>
     </div>
 
-    <div class="pl-4 pr-4">
+    <div class="pl-4 pr-4" [ngClass]="{ collapse: collapsed }">
       <form #personalInfoForm="ngForm">
         <div class="d-flex flex-md-row flex-column">
           <div class="flex-fill">
@@ -108,9 +120,18 @@
               type="number"
               class="form-control text-primary-light"
               [(ngModel)]="personalInfo.contact"
+              pattern="^[0-9]{10}$"
               name="contact"
               #contact="ngModel"
             />
+            <div
+              *ngIf="
+                contact.touched && contact.errors && contact.errors.pattern
+              "
+              class="text-danger"
+            >
+              <small>Provide valid contact details.</small>
+            </div>
           </div>
         </div>
 
@@ -176,11 +197,23 @@
           </div>
         </div>
 
-        <div class="d-flex mt-3 justify-content-end">
+        <ngb-alert
+          *ngIf="show"
+          type="success"
+          [dismissible]="false"
+          class="bg-secondary text-white"
+          >Edit Successful</ngb-alert
+        >
+
+        <div class="d-flex mt-3 mb-5 justify-content-end">
           <button
             type="button"
             class="btn btn-primary-light"
-            [disabled]="personalInfoForm.invalid || !educationTimeline.length"
+            [disabled]="
+              !personalInfoForm.dirty ||
+              personalInfoForm.invalid ||
+              !educationTimeline.length
+            "
             (click)="savePersonalInfo()"
           >
             {{ editMode ? "Save Changes" : "Next" }}

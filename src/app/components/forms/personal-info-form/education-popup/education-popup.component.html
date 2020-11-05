@@ -57,7 +57,7 @@
           <label
             for="graduationYear"
             class="text-primary"
-            [ngClass]="{ 'text-danger': validateNumberInput(graduationYear) }"
+            [ngClass]="{ 'text-danger': validateYearInput(graduationYear) }"
             >Graduation year*</label
           >
           <input
@@ -65,13 +65,15 @@
             type="number"
             class="form-control text-primary-light"
             [(ngModel)]="education.graduationYear"
-            [ngClass]="{ 'is-invalid': validateNumberInput(graduationYear) }"
+            [ngClass]="{ 'is-invalid': validateYearInput(graduationYear) }"
             name="graduationYear"
+            minlength="4"
+            maxlength="4"
             #graduationYear="ngModel"
             required
           />
-          <div *ngIf="validateNumberInput(graduationYear)" class="text-danger">
-            <small>Graduation Year is required.</small>
+          <div *ngIf="validateYearInput(graduationYear)" class="text-danger">
+            <small>Please enter valid year.</small>
           </div>
         </div>
 
@@ -112,7 +114,7 @@
     type="button"
     class="btn btn-primary-light"
     (click)="activeModal.close(education)"
-    [disabled]="myForm.invalid"
+    [disabled]="myForm.invalid || !yearInputValid"
   >
     {{ selectedEducationIndex == null ? "Add" : "Edit" }}
   </button>

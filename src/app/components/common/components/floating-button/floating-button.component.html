@@ -1,6 +1,7 @@
 <a
   (click)="emit()"
-  class="d-flex float bg-primary justify-content-center align-items-center"
+  class="d-flex float bg-primary-light justify-content-center align-items-center"
+  [ngClass]="{ 'float-edit': !edit }"
 >
-  <fa-icon [icon]="faPencilAlt" class="text-white" size="lg"></fa-icon>
+  <fa-icon [icon]="icon" class="text-white" size="lg"></fa-icon>
 </a>
