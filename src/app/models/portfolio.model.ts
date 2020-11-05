@@ -5,7 +5,7 @@ export interface Education {
   institution: string;
   city?: string;
   graduationYear: number;
-  result: number;
+  result: string;
 }
 
 export interface PersonalInfo {
@@ -13,7 +13,7 @@ export interface PersonalInfo {
   lastName: string;
   email: string;
   jobTitle: string;
-  contact: number;
+  contact?: number;
   educationTimeline: Education[];
 }
 
