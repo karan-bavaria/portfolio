@@ -5,22 +5,6 @@ import {
   UserData,
   WorkInfo,
 } from '../models/portfolio.model';
-import {
-  faAngular,
-  faNode,
-  faGithub,
-  faGit,
-  faGitlab,
-  faCss3,
-  faHtml5,
-  faJs,
-  faSass,
-  faNpm,
-  faReact,
-  faAws,
-  faVuejs,
-  faLess,
-} from '@fortawesome/free-brands-svg-icons';
 
 @Injectable({
   providedIn: 'root',

@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.reset();
   }
+
+  navigateToTemplate() {
+    window.open('https://karan-bavaria.github.io', '_blank');
+  }
 }
