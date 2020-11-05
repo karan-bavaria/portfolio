@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -6,20 +6,28 @@ import { Education, PersonalInfo } from 'src/app/models/portfolio.model';
 import { DataService } from 'src/app/data/data.service';
 import { EducationPopupComponent } from './education-popup/education-popup.component';
 import { NgModel } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-info-form',
   templateUrl: './personal-info-form.component.html',
   styleUrls: ['./personal-info-form.component.scss'],
 })
-export class PersonalInfoFormComponent {
+export class PersonalInfoFormComponent implements OnInit {
+  @Input() editMode: boolean;
+
   constructor(
     private modalService: NgbModal,
     private dataService: DataService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
+
+  ngOnInit(): void {
+    if (this.editMode) {
+      this.personalInfo = { ...this.dataService.userData.personalInfo };
+      this.educationTimeline = [...this.personalInfo.educationTimeline];
+    }
+  }
 
   faPlusSquare = faPlusSquare;
   faPencilAlt = faPencilAlt;
@@ -99,6 +107,10 @@ export class PersonalInfoFormComponent {
     this.personalInfo.educationTimeline = [...this.educationTimeline];
     this.dataService.setPersonalInfo(this.personalInfo);
 
+    if (this.editMode) {
+      alert('data edit successful');
+      return;
+    }
     this.router.navigate(['/forms', { outlets: { forms: 'intro' } }]);
   }
 

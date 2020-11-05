@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsGuard } from './components/common/route-guards/form-guard.guard';
+import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfolio.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { IntroFormComponent } from './components/forms/intro-form/intro-form.component';
 import { PersonalInfoFormComponent } from './components/forms/personal-info-form/personal-info-form.component';
@@ -75,6 +76,10 @@ const routes: Routes = [
         redirectTo: '',
       },
     ],
+  },
+  {
+    path: 'edit-portfolio',
+    component: EditPortfolioComponent,
   },
   {
     path: '**',

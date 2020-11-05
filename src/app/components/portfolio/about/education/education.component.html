@@ -8,12 +8,12 @@
       </div>
     </div>
 
-    <div class="container py-2 text-primary">
+    <div class="container py-2 text-primary pb-5">
       <div *ngFor="let education of educationTimeline; let index = index">
         <div *ngIf="!isEven(index + 1)" class="row no-gutters">
           <div class="col-md" *ngIf="showBadge()"></div>
           <div
-            class="col-md-1 text-center flex-column d-md-flex"
+            class="col-md-1 text-center flex-column d-none d-md-flex"
             *ngIf="showBadge()"
           >
             <div class="row h-50">

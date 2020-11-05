@@ -9,99 +9,95 @@
     </div>
 
     <div class="container py-2 text-primary">
-      <div class="row no-gutters">
-        <div class="col-md"></div>
-        <div class="col-md-1 text-center flex-column d-none d-md-flex">
-          <div class="row h-50">
-            <div class="col">&nbsp;</div>
-            <div class="col">&nbsp;</div>
+      <div *ngFor="let job of jobHistory; let index = index">
+        <div *ngIf="!isEven(index + 1)" class="row no-gutters">
+          <div class="col-md" *ngIf="showBadge()"></div>
+          <div
+            class="col-md-1 text-center flex-column d-none d-md-flex"
+            *ngIf="showBadge()"
+          >
+            <div class="row h-50">
+              <div class="col" [ngClass]="{ 'border-right': index > 0 }">
+                &nbsp;
+              </div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2" *ngIf="showBadge()">
+              <span class="badge badge-pill bg-light border">&nbsp;</span>
+            </h5>
+            <div class="row h-50" *ngIf="showLine(index)">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
           </div>
-          <h5 class="m-2">
-            <span class="badge badge-pill bg-light border">&nbsp;</span>
-          </h5>
-          <div class="row h-50">
-            <div class="col border-right">&nbsp;</div>
-            <div class="col">&nbsp;</div>
-          </div>
-        </div>
-        <div class="col-md py-2">
-          <div class="card">
-            <div class="card-body">
-              <div
-                class="card-title timeline-card-title-text font-weight-bold mb-0"
-              >
-                06/2019 - ongoing
-              </div>
-              <div class="text-success timeline-card-title-text">
-                Full Stack Developer
-              </div>
-              <div class="text-primary-light">
-                Paul Mason Consulting Pvt Ltd.
-              </div>
-              <div class="card-text mt-2 timeline-body-text">
-                <ul>
-                  <li class="mt-2">
-                    Working on client facing full stack web development in Agile
-                    process.
-                  </li>
-                  <li class="mt-2">
-                    Handled autonomous migration of legacy Foxpro system to
-                    modern web app, from reverse engineering to client
-                    communication to deployment.
-                  </li>
-                  <li class="mt-2">
-                    Integrated third party web application using SSO. Have
-                    decent exposure to Ionic and GraphQL.
-                  </li>
-                </ul>
+          <div class="col-md py-2">
+            <div class="card">
+              <div class="card-body">
+                <div
+                  class="card-title timeline-card-title-text font-weight-bold mb-0"
+                >
+                  {{ job.startingYear }} -
+                  {{ job.onGoing ? "onGoing" : job.endingYear }}
+                </div>
+                <div class="text-success timeline-card-title-text">
+                  {{ job.jobTitle }}
+                </div>
+                <div class="text-primary-light">
+                  {{ job.companyName }}
+                </div>
+                <div class="card-text mt-2 timeline-body-text">
+                  <ul>
+                    <li *ngFor="let project of job.projects" class="mt-2">
+                      {{ project }}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-md py-2">
-          <div class="card shadow">
-            <div class="card-body">
-              <div
-                class="card-title timeline-card-title-text font-weight-bold mb-0"
-              >
-                08/2018 - 06/2019
-              </div>
-              <div class="text-success timeline-card-title-text">
-                Project Trainee
-              </div>
-              <div class="text-primary-light">
-                Paul Mason Consulting Pvt Ltd.
-              </div>
-              <div class="card-text mt-2 timeline-body-text">
-                <ul>
-                  <li class="mt-2">
-                    Interned at the company in Angular web development. Learned
-                    full stack web development along with client communication.
-                  </li>
-                  <li class="mt-2">
-                    Implemented change requests and migrated a legacy system to
-                    Angular app.
-                  </li>
-                </ul>
+
+        <div *ngIf="isEven(index + 1)" class="row no-gutters">
+          <div class="col-md py-2">
+            <div class="card shadow">
+              <div class="card-body">
+                <div
+                  class="card-title timeline-card-title-text font-weight-bold mb-0"
+                >
+                  {{ job.startingYear }} -
+                  {{ job.onGoing ? "ongGoing" : job.endingYear }}
+                </div>
+                <div class="text-success timeline-card-title-text">
+                  {{ job.jobTitle }}
+                </div>
+                <div class="text-primary-light">
+                  {{ job.companyName }}
+                </div>
+                <div class="card-text mt-2 timeline-body-text">
+                  <ul>
+                    <li *ngFor="let project of job.projects" class="mt-2">
+                      {{ project }}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-1 text-center flex-column d-none d-md-flex">
-          <div class="row h-50">
-            <div class="col border-right">&nbsp;</div>
-            <div class="col">&nbsp;</div>
+          <div class="col-md-1 text-center flex-column d-none d-md-flex">
+            <div class="row h-50">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
+            <h5 class="m-2">
+              <span class="badge badge-pill bg-light">&nbsp;</span>
+            </h5>
+            <div class="row h-50" *ngIf="showLine(index)">
+              <div class="col border-right">&nbsp;</div>
+              <div class="col">&nbsp;</div>
+            </div>
           </div>
-          <h5 class="m-2">
-            <span class="badge badge-pill bg-light">&nbsp;</span>
-          </h5>
-          <div class="row h-50">
-            <div class="col">&nbsp;</div>
-          </div>
+          <div class="col-md"></div>
         </div>
-        <div class="col-md"></div>
       </div>
     </div>
   </div>

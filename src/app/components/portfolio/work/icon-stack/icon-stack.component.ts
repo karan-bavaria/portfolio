@@ -1,16 +1,6 @@
-import { Component } from '@angular/core';
-import {
-  faAngular,
-  faNode,
-  faGithub,
-  faGit,
-  faGitlab,
-  faCss3,
-  faHtml5,
-  faJs,
-  faSass,
-  faNpm,
-} from '@fortawesome/free-brands-svg-icons';
+import { Component, Input } from '@angular/core';
+
+import { Technology } from 'src/app/models/portfolio.model';
 
 @Component({
   selector: 'app-icon-stack',
@@ -18,16 +8,5 @@ import {
   styleUrls: ['./icon-stack.component.scss'],
 })
 export class IconStackComponent {
-  iconList = [
-    faAngular,
-    faNode,
-    faGithub,
-    faGit,
-    faGitlab,
-    faCss3,
-    faHtml5,
-    faJs,
-    faSass,
-    faNpm,
-  ];
+  @Input() technologyStack: Technology[];
 }

@@ -62,7 +62,28 @@ export class DataService {
       My Current technology stack includes Javascript, Typescript, Angular, NodeJS and various other frameworks and libraries related to them`,
     },
     workInfo: {
-      informationCards: null,
+      informationCards: [
+        {
+          cardHeader: 'stuff',
+          cardDetails: `Only coding front-end and back-end is not the whole picture, you also have care about other things needed in a successful web application project:
+
+          Good planning of UI and thinking how it affects the UX. Reliable client communication & client feedback.
+          Following Agile development process. Communicating with required stack holders.
+          Consistency in Design & Typography. Using proper Linting & Formatting for code base.
+          Working with Git and its features. Creating MRs, code reviews etc.
+          Working/Communicating & Growing together with team. Understanding what your role is and what you sign up for.`,
+        },
+        {
+          cardHeader: 'stuff',
+          cardDetails: `Only coding front-end and back-end is not the whole picture, you also have care about other things needed in a successful web application project:
+
+          Good planning of UI and thinking how it affects the UX. Reliable client communication & client feedback.
+          Following Agile development process. Communicating with required stack holders.
+          Consistency in Design & Typography. Using proper Linting & Formatting for code base.
+          Working with Git and its features. Creating MRs, code reviews etc.
+          Working/Communicating & Growing together with team. Understanding what your role is and what you sign up for.`,
+        },
+      ],
       jobHistory: [
         {
           startingYear: 2015,
@@ -74,7 +95,16 @@ export class DataService {
         },
         {
           startingYear: 2015,
-          endingYear: 2016,
+          endingYear: null,
+          onGoing: true,
+          companyName: 'Paul Mason Consulting',
+          jobTitle: 'Full stack developer',
+          projects: ['hello', 'this is my project'],
+        },
+        {
+          startingYear: 2015,
+          endingYear: null,
+          onGoing: true,
           companyName: 'Paul Mason Consulting',
           jobTitle: 'Full stack developer',
           projects: ['hello', 'this is my project'],

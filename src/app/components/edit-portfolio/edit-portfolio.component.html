@@ -1,0 +1,21 @@
+<div class="d-flex flex-column h-100">
+  <div
+    class="d-flex bg-primary p-3 justify-content-between flex-column flex-md-row"
+  >
+    <div class="d-flex">
+      <span class="ml-3 text-secondary">
+        Edit your <span class="text-white font-weight-bold">Portfolio</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="d-flex flex-grow-1 flex-column bg-secondary">
+    <app-personal-info-form [editMode]="true"></app-personal-info-form>
+
+    <app-intro-form [editMode]="true"></app-intro-form>
+
+    <app-work-form [editMode]="true"></app-work-form>
+  </div>
+
+  <app-floating-button (event)="navigateToPortfolio()"></app-floating-button>
+</div>

@@ -63,7 +63,7 @@
             (click)="saveChanges()"
             [disabled]="introductionForm.invalid"
           >
-            Next
+            {{ editMode ? "Save Changes" : "Next" }}
           </button>
         </div>
       </form>

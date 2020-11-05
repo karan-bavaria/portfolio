@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OtherStuffComponent } from './other-stuff.component';
+import { EditPortfolioComponent } from './edit-portfolio.component';
 
-describe('OtherStuffComponent', () => {
-  let component: OtherStuffComponent;
-  let fixture: ComponentFixture<OtherStuffComponent>;
+describe('EditPortfolioComponent', () => {
+  let component: EditPortfolioComponent;
+  let fixture: ComponentFixture<EditPortfolioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OtherStuffComponent ]
+      declarations: [ EditPortfolioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OtherStuffComponent);
+    fixture = TestBed.createComponent(EditPortfolioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

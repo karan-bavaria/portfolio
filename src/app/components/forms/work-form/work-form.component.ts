@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/data/data.service';
 import {
@@ -12,13 +12,16 @@ import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { IconsPopupComponent } from './icons-popup/icons-popup.component';
 import { CardsPopupComponent } from './cards-popup/cards-popup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-work-form',
   templateUrl: './work-form.component.html',
   styleUrls: ['./work-form.component.scss'],
 })
-export class WorkFormComponent {
+export class WorkFormComponent implements OnInit {
+  @Input() editMode: boolean;
+
   jobHistory: Job[] = [];
   selectedJobIndex: number;
   selectedCardIndex: number;
@@ -44,8 +47,16 @@ export class WorkFormComponent {
 
   constructor(
     private modalService: NgbModal,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {}
+
+  ngOnInit(): void {
+    if (this.editMode) {
+      this.workInfo = { ...this.dataService.userData.workInfo };
+      this.jobHistory = [...this.workInfo.jobHistory];
+    }
+  }
 
   openJobPopup() {
     const modalRef = this.modalService.open(JobPopupComponent, {
@@ -169,5 +180,11 @@ export class WorkFormComponent {
   saveWorkData() {
     this.workInfo.jobHistory = [...this.jobHistory];
     this.dataService.setWorkInfo(this.workInfo);
+
+    if (this.editMode) {
+      alert('data updated');
+      return;
+    }
+    this.router.navigate(['/portfolio']);
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/data/data.service';
@@ -8,13 +8,26 @@ import { DataService } from 'src/app/data/data.service';
   templateUrl: './intro-form.component.html',
   styleUrls: ['./intro-form.component.scss'],
 })
-export class IntroFormComponent {
+export class IntroFormComponent implements OnInit {
+  @Input() editMode: boolean;
+
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    if (this.editMode) {
+      this.introduction.setValue(
+        this.dataService.userData.introductionInfo.introduction
+      );
+      this.coverLetter.setValue(
+        this.dataService.userData.introductionInfo.coverLetter
+      );
+    }
+  }
 
   introductionMaxLength: number = 80;
 
@@ -36,6 +49,10 @@ export class IntroFormComponent {
 
   saveChanges() {
     this.dataService.setIntroductionInfo(this.introductionForm.value);
+    if (this.editMode) {
+      alert('personal info updated');
+      return;
+    }
     this.router.navigate(['/forms', { outlets: { forms: 'workinfo' } }]);
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  @Input() firstName: string;
+  @Input() lastName: string;
+
   collapsed = true;
   faBars = faBars;
 

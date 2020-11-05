@@ -14,7 +14,7 @@ import { FooterComponent } from './components/portfolio/footer/footer.component'
 import { NavbarComponent } from './components/portfolio/navbar/navbar.component';
 import { ExperienceComponent } from './components/portfolio/work/experience/experience.component';
 import { IconStackComponent } from './components/portfolio/work/icon-stack/icon-stack.component';
-import { OtherStuffComponent } from './components/portfolio/work/other-stuff/other-stuff.component';
+import { InformationCardComponent } from './components/portfolio/work/information-card/information-card.component';
 import { WorkTimelineComponent } from './components/portfolio/work/work-timeline/work-timeline.component';
 import { WorkComponent } from './components/portfolio/work/work.component';
 import { FormsComponent } from './components/forms/forms.component';
@@ -29,6 +29,7 @@ import { JobPopupComponent } from './components/forms/work-form/job-popup/job-po
 import { AddDotOnEnterDirective } from './components/common/directives/add-dot-on-enter.directive';
 import { IconsPopupComponent } from './components/forms/work-form/icons-popup/icons-popup.component';
 import { CardsPopupComponent } from './components/forms/work-form/cards-popup/cards-popup.component';
+import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfolio.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { CardsPopupComponent } from './components/forms/work-form/cards-popup/ca
     OfferComponent,
     EducationComponent,
     IconStackComponent,
-    OtherStuffComponent,
+    InformationCardComponent,
     WorkTimelineComponent,
     ExperienceComponent,
     PortfolioComponent,
@@ -56,6 +57,7 @@ import { CardsPopupComponent } from './components/forms/work-form/cards-popup/ca
     AddDotOnEnterDirective,
     IconsPopupComponent,
     CardsPopupComponent,
+    EditPortfolioComponent,
   ],
   imports: [
     BrowserModule,

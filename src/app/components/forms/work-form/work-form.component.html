@@ -171,9 +171,8 @@
           class="btn btn-primary-light"
           (click)="saveWorkData()"
           [disabled]="!jobHistory.length"
-          [routerLink]="['/portfolio']"
         >
-          Create template
+          {{ editMode ? "Save Changes" : "Generate Template" }}
         </button>
       </div>
     </div>

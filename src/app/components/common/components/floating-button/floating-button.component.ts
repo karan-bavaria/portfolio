@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,7 +8,12 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./floating-button.component.scss'],
 })
 export class FloatingButtonComponent {
+  @Output() event: EventEmitter<boolean> = new EventEmitter();
   constructor() {}
 
   faPencilAlt = faPencilAlt;
+
+  emit() {
+    this.event.emit(true);
+  }
 }

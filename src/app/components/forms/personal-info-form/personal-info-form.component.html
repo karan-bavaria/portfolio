@@ -183,7 +183,7 @@
             [disabled]="personalInfoForm.invalid || !educationTimeline.length"
             (click)="savePersonalInfo()"
           >
-            Next
+            {{ editMode ? "Save Changes" : "Next" }}
           </button>
         </div>
       </form>
