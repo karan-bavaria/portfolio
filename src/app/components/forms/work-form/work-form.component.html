@@ -190,7 +190,7 @@
           type="button"
           class="btn btn-primary-light"
           (click)="saveWorkData()"
-          [disabled]="!jobHistory.length"
+          [disabled]="disableButton()"
         >
           {{ editMode ? "Save Changes" : "Generate Template" }}
         </button>

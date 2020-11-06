@@ -31,6 +31,10 @@ export class WorkFormComponent implements OnInit {
   jobDetailsMissing: boolean = false;
   show: boolean;
 
+  iconStackChanged: boolean;
+  cardsInfoChanged: boolean;
+  jobDetailsChanged: boolean;
+
   faPlusSquare = faPlusSquare;
   faPencilAlt = faPencilAlt;
   faTrashAlt = faTrashAlt;
@@ -60,6 +64,9 @@ export class WorkFormComponent implements OnInit {
       this.workInfo = { ...this.dataService.userData.workInfo };
       this.jobHistory = [...this.workInfo.jobHistory];
       this.collapsed = true;
+      this.iconStackChanged = false;
+      this.jobDetailsChanged = false;
+      this.cardsInfoChanged = false;
     }
   }
 
@@ -88,6 +95,7 @@ export class WorkFormComponent implements OnInit {
   }
 
   editOrAddJobDetails() {
+    this.jobDetailsChanged = true;
     if (this.selectedJobIndex !== null) {
       this.jobHistory.splice(this.selectedJobIndex, 1, this.jobDetails);
       this.selectedJobIndex = null;
@@ -103,6 +111,7 @@ export class WorkFormComponent implements OnInit {
   }
 
   deleteSelectedJob(selectedJobIndex) {
+    this.jobDetailsChanged = true;
     this.jobHistory.splice(selectedJobIndex, 1);
     this.jobDetailsMissing = this.jobHistory.length === 0;
   }
@@ -128,9 +137,13 @@ export class WorkFormComponent implements OnInit {
       ...this.workInfo.technologyStack,
     ];
 
-    modalRef.result.then((technologyStack: Technology[]) => {
-      this.workInfo.technologyStack = [...technologyStack];
-    });
+    modalRef.result.then(
+      (technologyStack: Technology[]) => {
+        this.iconStackChanged = true;
+        this.workInfo.technologyStack = [...technologyStack];
+      },
+      () => {}
+    );
   }
 
   openCardsPopup() {
@@ -155,6 +168,7 @@ export class WorkFormComponent implements OnInit {
 
     modalRef.result.then(
       (informationCard: Card) => {
+        this.cardsInfoChanged = true;
         if (this.selectedCardIndex !== null) {
           this.workInfo.informationCards.splice(
             this.selectedCardIndex,
@@ -178,6 +192,7 @@ export class WorkFormComponent implements OnInit {
   }
 
   deleteSelectedCard(cardIndex) {
+    this.cardsInfoChanged = true;
     this.workInfo.informationCards.splice(cardIndex, 1);
     this.selectedCardIndex = null;
   }
@@ -192,5 +207,19 @@ export class WorkFormComponent implements OnInit {
       return;
     }
     this.router.navigate(['/portfolio']);
+  }
+
+  disableButton() {
+    if (!this.jobHistory.length) return true;
+    if (this.editMode) {
+      if (
+        this.jobDetailsChanged ||
+        this.iconStackChanged ||
+        this.cardsInfoChanged
+      )
+        return false;
+      return true;
+    }
+    return false;
   }
 }

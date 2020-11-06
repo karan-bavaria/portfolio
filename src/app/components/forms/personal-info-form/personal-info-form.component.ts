@@ -22,6 +22,7 @@ export class PersonalInfoFormComponent implements OnInit {
   collapsed: boolean;
   faChevronDown = faChevronDown;
   show = false;
+  educationTimelineChanged: boolean;
 
   constructor(
     private modalService: NgbModal,
@@ -34,6 +35,7 @@ export class PersonalInfoFormComponent implements OnInit {
       this.personalInfo = { ...this.dataService.userData.personalInfo };
       this.educationTimeline = [...this.personalInfo.educationTimeline];
       this.collapsed = false;
+      this.educationTimelineChanged = false;
     }
   }
 
@@ -88,6 +90,7 @@ export class PersonalInfoFormComponent implements OnInit {
   }
 
   editOrAddEducationDetails() {
+    this.educationTimelineChanged = true;
     if (this.selectedEducationIndex !== null) {
       this.educationTimeline.splice(
         this.selectedEducationIndex,
@@ -107,6 +110,7 @@ export class PersonalInfoFormComponent implements OnInit {
   }
 
   deleteSelectedEducation(selectedEducationIndex) {
+    this.educationTimelineChanged = true;
     this.educationTimeline.splice(selectedEducationIndex, 1);
     this.educationDetailsMissing = this.educationTimeline.length === 0;
   }
@@ -135,5 +139,12 @@ export class PersonalInfoFormComponent implements OnInit {
 
   validateTextInput(input: NgModel): Boolean {
     return input.touched && (input.invalid || input.value.trim().length === 0);
+  }
+
+  disableButton(personalInfoForm) {
+    if (personalInfoForm.invalid || !this.educationTimeline.length) return true;
+    if (this.educationTimelineChanged) return false;
+    if (!personalInfoForm.dirty) return true;
+    return false;
   }
 }

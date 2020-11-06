@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <span class="text-primary-light h5"> Job Details</span>
+  <span class="text-primary-light h5"> Information Card</span>
 </div>
 <div class="modal-body">
   <form #cardDetailsForm="ngForm">
@@ -29,7 +29,7 @@
         <label
           for="cardDetails"
           [ngClass]="{ 'text-danger': validateTextInput(cardDetails) }"
-          >Project details*</label
+          >Card Details*</label
         >
         <textarea
           id="cardDetails"

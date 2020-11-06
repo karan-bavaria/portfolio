@@ -114,7 +114,9 @@
     type="button"
     class="btn btn-primary-light"
     (click)="activeModal.close(education)"
-    [disabled]="myForm.invalid || !yearInputValid"
+    [disabled]="
+      !myForm.dirty || myForm.invalid || validateYearInput(graduationYear)
+    "
   >
     {{ selectedEducationIndex == null ? "Add" : "Edit" }}
   </button>
