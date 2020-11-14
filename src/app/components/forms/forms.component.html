@@ -1,52 +1,45 @@
-<div class="d-flex flex-column h-100">
-  <div
-    class="d-flex bg-primary p-3 justify-content-between flex-column flex-md-row"
-  >
-    <div class="d-flex">
-      <span class="ml-3 text-secondary">
-        Build your <span class="text-white font-weight-bold">portfolio</span> in
-        <span class="text-white">3</span>
-        easy steps
-      </span>
-    </div>
-  </div>
-
-  <div class="d-flex flex-grow-1 flex-column bg-secondary">
-    <div
-      [@routeAnimations]="
-        o && o.activatedRouteData && o.activatedRouteData['animation']
-      "
-    >
-      <router-outlet name="forms" #o="outlet"></router-outlet>
-    </div>
-  </div>
-
-  <footer class="bg-secondary fixed-bottom step-footer">
-    <div class="text-center m-2">
-      <span
-        class="step text-primary-light bg-white font-weight-bold mr-2"
-        [ngClass]="{
-          'step-finish': dataService.isPersonalDataSaved,
-          'step-active': onPersonalForm
-        }"
-        >1</span
-      >
-      <span
-        class="step text-primary-light bg-white font-weight-bold mr-2"
-        [ngClass]="{
-          'step-finish': dataService.isIntroSaved,
-          'step-active': onIntroForm
-        }"
-        >2</span
-      >
-      <span
-        class="step text-primary-light bg-white font-weight-bold"
-        [ngClass]="{
-          'step-finish': dataService.isWorkInfoSaved,
-          'step-active': onWorkForm
-        }"
-        >3</span
-      >
-    </div>
-  </footer>
+<div class="fixed-top bg-primary p-3">
+  <span class="ml-sm-3 text-secondary">
+    Build your <span class="text-white font-weight-bold">portfolio</span> in
+    <span class="text-white">3</span>
+    easy steps
+  </span>
 </div>
+
+<div
+  class="container-fluid pl-0 pr-0 body-content bg-secondary"
+  [@routeAnimations]="
+    o && o.activatedRouteData && o.activatedRouteData['animation']
+  "
+>
+  <router-outlet name="forms" #o="outlet"></router-outlet>
+</div>
+
+<footer class="bg-white fixed-bottom">
+  <div class="text-center m-2">
+    <span
+      class="step text-primary-light bg-white font-weight-bold mr-2"
+      [ngClass]="{
+        'step-finish': dataService.isPersonalDataSaved,
+        'step-active': onPersonalForm
+      }"
+      >1</span
+    >
+    <span
+      class="step text-primary-light bg-white font-weight-bold mr-2"
+      [ngClass]="{
+        'step-finish': dataService.isIntroSaved,
+        'step-active': onIntroForm
+      }"
+      >2</span
+    >
+    <span
+      class="step text-primary-light bg-white font-weight-bold"
+      [ngClass]="{
+        'step-finish': dataService.isWorkInfoSaved,
+        'step-active': onWorkForm
+      }"
+      >3</span
+    >
+  </div>
+</footer>

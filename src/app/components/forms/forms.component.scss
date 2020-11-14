@@ -16,18 +16,13 @@
   margin-right: 340px;
 }
 
-.step-footer {
-  height: 7%;
-}
-
-.sticky-bottom {
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 0;
-  z-index: 1020;
-}
-
 .step-active {
   background-color: #2b7a78 !important;
   color: white !important;
+}
+
+.body-content {
+  height: calc(100% - 130px) !important;
+  overflow-y: auto !important;
+  margin-top: 70px !important;
 }

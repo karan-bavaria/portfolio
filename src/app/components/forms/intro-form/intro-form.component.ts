@@ -16,6 +16,11 @@ export class IntroFormComponent implements OnInit {
   faChevronDown = faChevronDown;
   show: boolean;
 
+  editorStyle = {
+    height: '200px',
+    'border-radius': '0.25rem',
+  };
+
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
@@ -42,7 +47,7 @@ export class IntroFormComponent implements OnInit {
       '',
       [Validators.required, Validators.maxLength(this.introductionMaxLength)],
     ],
-    coverLetter: ['', Validators.required],
+    coverLetter: ['', null],
   });
 
   get introduction() {
@@ -55,15 +60,19 @@ export class IntroFormComponent implements OnInit {
 
   saveChanges() {
     this.dataService.setIntroductionInfo(this.introductionForm.value);
-    if (this.editMode) {
-      this.show = true;
-      setTimeout(() => (this.show = false), 3000);
-      return;
-    }
+    this.showEditSuccessMessage();
     this.router.navigate(['/forms', { outlets: { forms: 'workinfo' } }]);
   }
 
   validateTextInput(input: AbstractControl): Boolean {
     return input.touched && (input.invalid || input.value.trim().length === 0);
+  }
+
+  showEditSuccessMessage() {
+    if (this.editMode) {
+      this.show = true;
+      setTimeout(() => (this.show = false), 3000);
+      return;
+    }
   }
 }

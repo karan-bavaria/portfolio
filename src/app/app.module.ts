@@ -30,6 +30,8 @@ import { AddDotOnEnterDirective } from './components/common/directives/add-dot-o
 import { IconsPopupComponent } from './components/forms/work-form/icons-popup/icons-popup.component';
 import { CardsPopupComponent } from './components/forms/work-form/cards-popup/cards-popup.component';
 import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfolio.component';
+import { QuillModule } from 'ngx-quill';
+import { quillConfig } from './quill.config';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfol
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule.forRoot(quillConfig),
   ],
   providers: [],
   bootstrap: [AppComponent],
