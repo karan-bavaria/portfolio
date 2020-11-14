@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/data/data.service';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,18 +15,34 @@ export class IntroFormComponent implements OnInit {
   collapsed: boolean;
   faChevronDown = faChevronDown;
   show: boolean;
+  introductionMaxLength: number = 80;
 
   editorStyle = {
-    height: '200px',
+    height: '235px',
     'border-radius': '0.25rem',
   };
 
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
+
+  introductionForm = this.fb.group({
+    introduction: [
+      '',
+      [Validators.required, Validators.maxLength(this.introductionMaxLength)],
+    ],
+    coverLetter: ['', Validators.required],
+  });
+
+  get introduction() {
+    return this.introductionForm.get('introduction');
+  }
+
+  get coverLetter() {
+    return this.introductionForm.get('coverLetter');
+  }
 
   ngOnInit(): void {
     if (this.editMode) {
@@ -40,22 +56,8 @@ export class IntroFormComponent implements OnInit {
     }
   }
 
-  introductionMaxLength: number = 80;
-
-  introductionForm = this.fb.group({
-    introduction: [
-      '',
-      [Validators.required, Validators.maxLength(this.introductionMaxLength)],
-    ],
-    coverLetter: ['', null],
-  });
-
-  get introduction() {
-    return this.introductionForm.get('introduction');
-  }
-
-  get coverLetter() {
-    return this.introductionForm.get('coverLetter');
+  onEditorCreated(quill) {
+    quill.format('size', 'large');
   }
 
   saveChanges() {

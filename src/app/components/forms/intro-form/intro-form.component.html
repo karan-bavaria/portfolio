@@ -52,20 +52,26 @@
             <label
               for="coverLetter"
               class="text-primary"
-              [ngClass]="{ 'text-danger': validateTextInput(coverLetter) }"
+              [ngClass]="{
+                'text-danger': coverLetter.touched && coverLetter.invalid
+              }"
               >Cover letter*</label
             >
             <quill-editor
-              formControlName="coverLetter"
+              [formControl]="coverLetter"
               class="text-primary-light"
               id="coverLetter"
               name="coverLetter"
+              (onEditorCreated)="onEditorCreated($event)"
               [styles]="editorStyle"
               [required]="true"
             >
             </quill-editor>
 
-            <div *ngIf="validateTextInput(coverLetter)" class="text-danger">
+            <div
+              *ngIf="coverLetter.touched && coverLetter.invalid"
+              class="text-danger"
+            >
               <small>Please provide your cover letter.</small>
             </div>
           </div>

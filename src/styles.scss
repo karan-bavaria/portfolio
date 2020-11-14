@@ -20,8 +20,3 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-.ql-editor:focus {
-  border: 1px solid #446e7c !important;
-  box-shadow: 0 0 0 0.2rem rgba(23, 37, 42, 0.25) !important;
-}

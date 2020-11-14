@@ -10,3 +10,27 @@ textarea {
   margin-top: 12px;
   margin-right: 10px;
 }
+
+::ng-deep .ql-editor:focus {
+  border: 1px solid #446e7c !important;
+  box-shadow: 0 0 0 0.2rem rgba(23, 37, 42, 0.25) !important;
+  border-radius: 0.25em;
+}
+
+::ng-deep .ql-toolbar {
+  border-radius: 0.25em;
+}
+
+::ng-deep quill-editor.ng-invalid.ng-touched {
+  .ql-container {
+    border: 1px solid #dc3545 !important;
+    border-radius: 0.25em;
+  }
+}
+
+::ng-deep quill-editor.ng-invalid.ng-touched {
+  .ql-editor:focus {
+    border: 1px solid #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+  }
+}
