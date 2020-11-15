@@ -15,8 +15,22 @@ export class FormsComponent implements OnInit {
   onPersonalForm: boolean = true;
   onIntroForm: boolean = false;
   onWorkForm: boolean = false;
+  skipWorkForm: boolean = false;
 
   ngOnInit(): void {
+    this.updateStepViewer();
+    this.updateStepCount();
+  }
+
+  updateStepCount() {
+    this.dataService.skipWorkFormObservable.subscribe(
+      (skipWorkForm: boolean) => {
+        this.skipWorkForm = skipWorkForm;
+      }
+    );
+  }
+
+  updateStepViewer() {
     this.route.events.subscribe((events) => {
       if (this.route.url === '/forms') {
         this.onPersonalForm = true;

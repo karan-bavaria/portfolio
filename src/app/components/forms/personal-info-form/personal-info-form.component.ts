@@ -51,6 +51,7 @@ export class PersonalInfoFormComponent implements OnInit {
     lastName: '',
     email: '',
     jobTitle: '',
+    hasJobExperience: true,
     contact: null,
     educationTimeline: [],
   };
@@ -125,6 +126,13 @@ export class PersonalInfoFormComponent implements OnInit {
       return;
     }
     this.router.navigate(['/forms', { outlets: { forms: 'intro' } }]);
+  }
+
+  onRadioSelected(option) {
+    if (option.checked) {
+      this.personalInfo.hasJobExperience = option.value === 'true'; //convert to boolean
+      this.dataService.updateStepCount(this.personalInfo.hasJobExperience);
+    }
   }
 
   resetEducationDetails() {

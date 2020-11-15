@@ -12,9 +12,10 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 export class IntroFormComponent implements OnInit {
   @Input() editMode: boolean;
 
-  collapsed: boolean;
   faChevronDown = faChevronDown;
   show: boolean;
+  collapsed: boolean;
+  skipWorkForm: boolean;
   introductionMaxLength: number = 80;
 
   editorStyle = {
@@ -45,6 +46,7 @@ export class IntroFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.skipWorkForm = this.dataService.skipWorkForm;
     if (this.editMode) {
       this.introduction.setValue(
         this.dataService.userData.introductionInfo.introduction
@@ -62,7 +64,14 @@ export class IntroFormComponent implements OnInit {
 
   saveChanges() {
     this.dataService.setIntroductionInfo(this.introductionForm.value);
-    this.showEditSuccessMessage();
+    if (this.editMode) {
+      this.showEditSuccessMessage();
+      return;
+    }
+    if (this.skipWorkForm) {
+      this.router.navigate(['/portfolio']);
+      return;
+    }
     this.router.navigate(['/forms', { outlets: { forms: 'workinfo' } }]);
   }
 
@@ -71,10 +80,7 @@ export class IntroFormComponent implements OnInit {
   }
 
   showEditSuccessMessage() {
-    if (this.editMode) {
-      this.show = true;
-      setTimeout(() => (this.show = false), 3000);
-      return;
-    }
+    this.show = true;
+    setTimeout(() => (this.show = false), 3000);
   }
 }

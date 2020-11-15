@@ -1,13 +1,13 @@
 <div class="container pt-2 pb-4">
   <div class="shadow bg-white" [ngClass]="{ 'pb-4': !collapsed }">
-    <div class="text-primary mt-2" [ngClass]="{ 'mb-4': !collapsed }">
+    <div class="d-flex text-primary mt-2" [ngClass]="{ 'mb-4': !collapsed }">
       <span class="card-header-text text-secondary font-weight-bold ml-4"
         >INTRODUCTION</span
       >
       <a
         (click)="collapsed = !collapsed"
         *ngIf="editMode"
-        class="ml-auto expand-icon"
+        class="ml-auto expand-icon pt-1 pr-1"
       >
         <fa-icon
           [icon]="faChevronDown"
@@ -91,7 +91,13 @@
               (click)="saveChanges()"
               [disabled]="!introductionForm.dirty || introductionForm.invalid"
             >
-              {{ editMode ? "Save Changes" : "Next" }}
+              {{
+                editMode
+                  ? "Save Changes"
+                  : skipWorkForm
+                  ? "Generate Template"
+                  : "Next"
+              }}
             </button>
           </div>
         </form>

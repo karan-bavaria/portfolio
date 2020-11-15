@@ -22,18 +22,18 @@ export class FormsGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (next.routeConfig.path === '' && this.dataService.isPersonalDataSaved) {
-      return false;
-    }
-    if (next.routeConfig.path === 'intro' && this.dataService.isIntroSaved) {
-      return false;
-    }
-    if (
-      next.routeConfig.path === 'workinfo' &&
-      this.dataService.isWorkInfoSaved
-    ) {
-      return false;
-    }
+    // if (next.routeConfig.path === '' && this.dataService.isPersonalDataSaved) {
+    //   return false;
+    // }
+    // if (next.routeConfig.path === 'intro' && this.dataService.isIntroSaved) {
+    //   return false;
+    // }
+    // if (
+    //   next.routeConfig.path === 'workinfo' &&
+    //   this.dataService.isWorkInfoSaved
+    // ) {
+    //   return false;
+    // }
     return true;
   }
 }

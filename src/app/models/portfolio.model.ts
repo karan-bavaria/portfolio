@@ -14,6 +14,7 @@ export interface PersonalInfo {
   email: string;
   jobTitle: string;
   contact?: number;
+  hasJobExperience: boolean;
   educationTimeline: Education[];
 }
 
