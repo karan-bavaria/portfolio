@@ -36,6 +36,7 @@
         class="nav-link text-white"
         [routerLink]="[{ outlets: { portfolio: ['about'] } }]"
         [routerLinkActive]="['active']"
+        *ngIf="!dataService.skipWorkForm"
         (click)="collapsed = true"
         >About Me</a
       >
@@ -43,6 +44,7 @@
         class="nav-link text-white"
         [routerLink]="[{ outlets: { portfolio: ['work'] } }]"
         [routerLinkActive]="['active']"
+        *ngIf="!dataService.skipWorkForm"
         (click)="collapsed = true"
         >Work</a
       >

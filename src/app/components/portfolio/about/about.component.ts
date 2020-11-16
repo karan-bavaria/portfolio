@@ -9,7 +9,7 @@ import { Education } from 'src/app/models/portfolio.model';
 })
 export class AboutComponent implements OnInit {
   introText: string[] = [];
-  coverLetter: string[] = [];
+  coverLetter: string;
   educationTimeline: Education[] = [];
 
   constructor(private dataService: DataService) {}
@@ -18,9 +18,7 @@ export class AboutComponent implements OnInit {
     this.introText = this.dataService.userData.introductionInfo.introduction.split(
       '\n'
     );
-    this.coverLetter = this.dataService.userData.introductionInfo.coverLetter.split(
-      '\n'
-    );
+    this.coverLetter = this.dataService.userData.introductionInfo.coverLetter;
     this.educationTimeline = [
       ...this.dataService.userData.personalInfo.educationTimeline,
     ];

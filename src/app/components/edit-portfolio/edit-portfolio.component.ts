@@ -8,7 +8,7 @@ import { DataService } from 'src/app/data/data.service';
   styleUrls: ['./edit-portfolio.component.scss'],
 })
 export class EditPortfolioComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dataService: DataService) {}
 
   ngOnInit(): void {}
 

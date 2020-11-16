@@ -32,6 +32,7 @@ import { CardsPopupComponent } from './components/forms/work-form/cards-popup/ca
 import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfolio.component';
 import { QuillModule } from 'ngx-quill';
 import { quillConfig } from './quill.config';
+import { AutofocusDirective } from './components/common/directives/auto-focus.directive';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { quillConfig } from './quill.config';
     IconsPopupComponent,
     CardsPopupComponent,
     EditPortfolioComponent,
+    AutofocusDirective,
   ],
   imports: [
     BrowserModule,

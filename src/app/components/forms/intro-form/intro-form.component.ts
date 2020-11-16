@@ -21,6 +21,7 @@ export class IntroFormComponent implements OnInit {
   editorStyle = {
     height: '235px',
     'border-radius': '0.25rem',
+    'font-size': '20px',
   };
 
   constructor(
@@ -59,7 +60,7 @@ export class IntroFormComponent implements OnInit {
   }
 
   onEditorCreated(quill) {
-    quill.format('size', 'large');
+    quill.root.blur();
   }
 
   saveChanges() {

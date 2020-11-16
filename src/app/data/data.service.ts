@@ -40,9 +40,22 @@ export class DataService {
     introductionInfo: {
       coverLetter:
         '<p>ksjdhfkshnfkhskjfkj sdkjfklsd sdfn\n\n\nlaskdfjlsakdmf</p>',
-      introduction: 'hi i am jklsfaf kljashfa \n\n aksjdlkasd',
+      introduction: 'hi i am jklsfaf kljashfa saasvc\n\n aksjdlkasd',
     },
-    workInfo: null,
+    workInfo: {
+      jobHistory: [
+        {
+          companyName: 'asfdad',
+          endingYear: 9090,
+          jobTitle: 'kjfhk dskjhf',
+          startingYear: 2020,
+          onGoing: true,
+          projects: ['aslkflaskfm'],
+        },
+      ],
+      informationCards: null,
+      technologyStack: [],
+    },
   };
 
   get userData() {
@@ -51,7 +64,6 @@ export class DataService {
 
   setPersonalInfo(personalInfo: PersonalInfo) {
     this._userData.personalInfo = { ...personalInfo };
-    this.skipWorkFormIfUserIsFresher();
     this.isPersonalDataSaved = true;
   }
 
@@ -65,18 +77,12 @@ export class DataService {
     this.isWorkInfoSaved = true;
   }
 
-  skipWorkFormIfUserIsFresher() {
-    if (this.userData.personalInfo.hasJobExperience) {
-      this.skipWorkForm = false;
-    } else {
-      this.skipWorkForm = true;
-    }
-  }
-
   updateStepCount(userHasWorkExperience) {
     if (userHasWorkExperience) {
+      this.skipWorkForm = false;
       this.skipWorkFormSubject.next(false);
     } else {
+      this.skipWorkForm = true;
       this.skipWorkFormSubject.next(true);
     }
   }

@@ -63,6 +63,7 @@
               id="coverLetter"
               name="coverLetter"
               (onEditorCreated)="onEditorCreated($event)"
+              placeholder=""
               [styles]="editorStyle"
               [required]="true"
             >
@@ -80,7 +81,7 @@
             *ngIf="show"
             type="success"
             [dismissible]="false"
-            class="bg-secondary text-white"
+            class="bg-primary text-white"
             >Edit Successful</ngb-alert
           >
 
