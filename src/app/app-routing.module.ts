@@ -55,6 +55,7 @@ const routes: Routes = [
   {
     path: 'portfolio',
     component: PortfolioComponent,
+    canActivate: [FormsGuard],
     children: [
       {
         path: '',
@@ -79,6 +80,7 @@ const routes: Routes = [
   },
   {
     path: 'edit-portfolio',
+    canActivate: [FormsGuard],
     component: EditPortfolioComponent,
   },
   {

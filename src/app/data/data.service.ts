@@ -22,40 +22,9 @@ export class DataService {
   public skipWorkForm: boolean = false;
 
   private _userData: UserData = {
-    personalInfo: {
-      firstName: 'Karan',
-      lastName: 'Bavaria',
-      email: 'kjfhkjznfa@klasfn',
-      hasJobExperience: false,
-      jobTitle: 'fulkjsdnf kjsnfjklds',
-      educationTimeline: [
-        {
-          course: 'sdklfnldsf',
-          graduationYear: 2020,
-          institution: 'aklsfnalksfn',
-          result: '10.0',
-        },
-      ],
-    },
-    introductionInfo: {
-      coverLetter:
-        '<p>ksjdhfkshnfkhskjfkj sdkjfklsd sdfn\n\n\nlaskdfjlsakdmf</p>',
-      introduction: 'hi i am jklsfaf kljashfa saasvc\n\n aksjdlkasd',
-    },
-    workInfo: {
-      jobHistory: [
-        {
-          companyName: 'asfdad',
-          endingYear: 9090,
-          jobTitle: 'kjfhk dskjhf',
-          startingYear: 2020,
-          onGoing: true,
-          projects: ['aslkflaskfm'],
-        },
-      ],
-      informationCards: null,
-      technologyStack: [],
-    },
+    introductionInfo: null,
+    personalInfo: null,
+    workInfo: null,
   };
 
   get userData() {
@@ -91,5 +60,10 @@ export class DataService {
     this.isPersonalDataSaved = false;
     this.isWorkInfoSaved = false;
     this.isIntroSaved = false;
+    this._userData = {
+      introductionInfo: null,
+      personalInfo: null,
+      workInfo: null,
+    };
   }
 }

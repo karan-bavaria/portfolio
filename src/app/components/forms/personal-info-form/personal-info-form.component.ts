@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -8,8 +8,6 @@ import { EducationPopupComponent } from './education-popup/education-popup.compo
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Subject } from 'rxjs';
-import { debounceTime, flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-personal-info-form',
@@ -23,21 +21,6 @@ export class PersonalInfoFormComponent implements OnInit {
   faChevronDown = faChevronDown;
   show = false;
   educationTimelineChanged: boolean;
-
-  constructor(
-    private modalService: NgbModal,
-    private dataService: DataService,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    if (this.editMode) {
-      this.personalInfo = { ...this.dataService.userData.personalInfo };
-      this.educationTimeline = [...this.personalInfo.educationTimeline];
-      this.collapsed = false;
-      this.educationTimelineChanged = false;
-    }
-  }
 
   faPlusSquare = faPlusSquare;
   faPencilAlt = faPencilAlt;
@@ -65,6 +48,21 @@ export class PersonalInfoFormComponent implements OnInit {
   };
 
   educationTimeline: Education[] = [];
+
+  constructor(
+    private modalService: NgbModal,
+    private dataService: DataService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    if (this.editMode) {
+      this.personalInfo = { ...this.dataService.userData.personalInfo };
+      this.educationTimeline = [...this.personalInfo.educationTimeline];
+      this.collapsed = false;
+      this.educationTimelineChanged = false;
+    }
+  }
 
   openEducationPopup() {
     const modalRef = this.modalService.open(EducationPopupComponent, {
